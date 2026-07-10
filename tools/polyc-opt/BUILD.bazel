@@ -1,2 +1,11 @@
-# The `polyc-opt` driver (mlir-opt-style; loads the poly dialect + passes).
-# Populated in M1.
+package(default_visibility = ["//visibility:public"])
+
+cc_binary(
+    name = "polyc-opt",
+    srcs = ["polyc_opt.cc"],
+    deps = [
+        "//lib/Dialect/Poly:PolyDialect",
+        "@llvm-project//mlir:AllPassesAndDialects",
+        "@llvm-project//mlir:MlirOptLib",
+    ],
+)

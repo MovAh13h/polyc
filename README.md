@@ -8,7 +8,7 @@ live in [`ROADMAP.md`](ROADMAP.md). Summary:
 | # | Milestone | Status |
 |---|---|---|
 | M0 | Project skeleton | ✅ done |
-| M1 | Empty `poly` dialect registered | pending |
+| M1 | Empty `poly` dialect registered | ✅ done |
 | M2 | Core ops (`const`, `add`, `mul`, `eval`, `diff`) + round-trip | pending |
 | M3 | Verifiers | pending |
 | M4 | Canonicalization + folders | pending |
