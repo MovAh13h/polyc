@@ -1,0 +1,10 @@
+bazel-bin
+bazel-polyc
+bazel-out
+bazel-testlogs
+external/
+compile_commands.json
+.cache/
+.claude/
+.zed/
+.DS_Store
