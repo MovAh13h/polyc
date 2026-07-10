@@ -1,14 +1,9 @@
 # The `poly` dialect
 
-Draft — filled in as ops land. See `include/polyc/Dialect/Poly/PolyOps.td`
-for the source of truth.
-
 ## Types
 
 - `!poly.poly` — a univariate polynomial with `f64` coefficients,
-  stored in descending order of degree. (v0.1: shape is inferred from
-  the constant attribute; a parametric `!poly.poly<T, degree>` may
-  arrive later.)
+  stored in descending order of degree
 
 ## Ops
 
