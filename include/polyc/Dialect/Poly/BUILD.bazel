@@ -1,1 +1,32 @@
-# Public headers for the Poly dialect. Populated in M1.
+load("@llvm-project//mlir:tblgen.bzl", "gentbl_cc_library", "td_library")
+
+package(default_visibility = ["//visibility:public"])
+
+td_library(
+    name = "PolyDialectTdFiles",
+    srcs = ["PolyDialect.td"],
+    includes = ["../../.."],
+    deps = ["@llvm-project//mlir:OpBaseTdFiles"],
+)
+
+gentbl_cc_library(
+    name = "PolyDialectIncGen",
+    strip_include_prefix = "/include",
+    tbl_outs = [
+        (["-gen-dialect-decls"], "PolyDialect.h.inc"),
+        (["-gen-dialect-defs"], "PolyDialect.cc.inc"),
+    ],
+    tblgen = "@llvm-project//mlir:mlir-tblgen",
+    td_file = "PolyDialect.td",
+    deps = [":PolyDialectTdFiles"],
+)
+
+cc_library(
+    name = "PolyDialectHeaders",
+    hdrs = ["PolyDialect.h"],
+    strip_include_prefix = "/include",
+    deps = [
+        ":PolyDialectIncGen",
+        "@llvm-project//mlir:IR",
+    ],
+)
