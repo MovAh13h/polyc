@@ -3,8 +3,5 @@ package(default_visibility = ["//visibility:public"])
 cc_library(
     name = "PolyDialect",
     srcs = ["PolyDialect.cc"],
-    deps = [
-        "//include/polyc/Dialect/Poly:PolyDialectHeaders",
-        "@llvm-project//mlir:IR",
-    ],
+    deps = ["//include/polyc/Dialect/Poly:PolyDialectHeaders"],
 )

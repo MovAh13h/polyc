@@ -6,15 +6,21 @@ td_library(
     name = "PolyDialectTdFiles",
     srcs = ["PolyDialect.td"],
     includes = ["../../.."],
-    deps = ["@llvm-project//mlir:OpBaseTdFiles"],
+    deps = [
+        "@llvm-project//mlir:BuiltinDialectTdFiles",
+        "@llvm-project//mlir:OpBaseTdFiles",
+        "@llvm-project//mlir:SideEffectInterfacesTdFiles",
+    ],
 )
 
 gentbl_cc_library(
     name = "PolyDialectIncGen",
     strip_include_prefix = "/include",
     tbl_outs = [
-        (["-gen-dialect-decls"], "PolyDialect.h.inc"),
-        (["-gen-dialect-defs"], "PolyDialect.cc.inc"),
+        (["-gen-dialect-decls", "-dialect=poly"], "PolyDialect.h.inc"),
+        (["-gen-dialect-defs", "-dialect=poly"], "PolyDialect.cc.inc"),
+        (["-gen-op-decls"], "PolyOps.h.inc"),
+        (["-gen-op-defs"], "PolyOps.cc.inc"),
     ],
     tblgen = "@llvm-project//mlir:mlir-tblgen",
     td_file = "PolyDialect.td",
@@ -28,5 +34,6 @@ cc_library(
     deps = [
         ":PolyDialectIncGen",
         "@llvm-project//mlir:IR",
+        "@llvm-project//mlir:SideEffectInterfaces",
     ],
 )

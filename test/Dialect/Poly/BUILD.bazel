@@ -1,0 +1,6 @@
+load("//test/common:test.bzl", "polyc_roundtrip_test")
+
+polyc_roundtrip_test(
+    name = "round_trip",
+    src = "round_trip.mlir",
+)
