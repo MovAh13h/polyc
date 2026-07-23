@@ -41,7 +41,7 @@ LogicalResult ConstOp::verify() {
         return success();
 
     if ((int64_t) attrLen != resultLen) {
-        return emitOpError("coefficient count") << attrLen << " does not match result " << resultLen;
+        return emitOpError("coefficient count ") << attrLen << " does not match result tensor length " << resultLen;
     }
 
     return success();
