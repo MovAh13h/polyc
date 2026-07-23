@@ -1,3 +1,6 @@
 package(default_visibility = ["//visibility:public"])
 
-exports_files(["run_roundtrip.sh"])
+exports_files([
+    "run_roundtrip.sh",
+    "run_verify_diagnostics.sh",
+])

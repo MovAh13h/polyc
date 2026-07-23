@@ -1,6 +1,11 @@
-load("//test/common:test.bzl", "polyc_roundtrip_test")
+load("//test/common:test.bzl", "polyc_roundtrip_test", "polyc_verify_diagnostics_test")
 
 polyc_roundtrip_test(
     name = "round_trip",
     src = "round_trip.mlir",
+)
+
+polyc_verify_diagnostics_test(
+    name = "verify",
+    src = "verify.mlir",
 )

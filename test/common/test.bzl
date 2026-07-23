@@ -27,3 +27,25 @@ def polyc_roundtrip_test(name, src):
             "@llvm-project//llvm:FileCheck",
         ],
     )
+
+def polyc_verify_diagnostics_test(name, src):
+    """Runs `polyc-opt --verify-diagnostics --split-input-file src`.
+
+    Args:
+      name: the test target name.
+      src: a .mlir file containing snippets separated by `// -----`,
+        each with `// expected-error @+N {{msg}}` directives asserting
+        which verifier diagnostics must fire.
+    """
+    native.sh_test(
+        name = name,
+        srcs = ["//test/common:run_verify_diagnostics.sh"],
+        args = [
+            "$(location //tools/polyc-opt)",
+            "$(location {})".format(src),
+        ],
+        data = [
+            src,
+            "//tools/polyc-opt",
+        ],
+    )
